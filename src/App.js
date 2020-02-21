@@ -9,8 +9,11 @@ import EventPractice from './EventPractice';
 import EventPractice02 from './EventPractice02';
 import ValidationSample from './ValidationSample';
 import IterationSample from './IterationSample';
+import LifeCycleSample from './LifeCycleSample';
 
-
+function getRandomColor(){
+  return '#'+Math.floor(Math.random()*16777215).toString(16);
+}
 class App extends Component {
 
   state = {
@@ -21,7 +24,14 @@ class App extends Component {
       {id : 1, title : 'HTML', desc : 'HTML IS EASY~'},
       {id : 2, title : 'JSP', desc : 'HTML IS EASY~'},
       {id : 3, title : 'JAVASCRIPT', desc : 'HTML IS EASY~'}
-    ]
+    ],
+    color:'#000000'
+  }
+
+  handleColor=()=>{
+    this.setState({
+      color:getRandomColor()
+    })
   }
 
   
@@ -68,13 +78,15 @@ class App extends Component {
           <h1>이벤트 연습</h1>
           <EventPractice />
           </div> */}
-        <div>
+     {/*    <div>
           <ValidationSample></ValidationSample>
         </div>
 
         <div>
           <IterationSample></IterationSample>
-        </div>
+        </div> */}
+        <button onClick={this.handleColor}>랜덤 색상</button>
+        <LifeCycleSample color={this.state.color}></LifeCycleSample>
 
       </div>
     );

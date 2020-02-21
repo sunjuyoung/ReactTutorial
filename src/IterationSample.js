@@ -14,8 +14,17 @@ const IterationSample = () => {
     const [inputText,setInputText] = useState('');
     const [nextId,setNextId] = useState(4);
     const inputChange = e => setInputText(e.target.value);
+        //삭제
+        const onRemove =(id)=>{
+            console.log(id);
+            const removeName = name.filter(name=> name.id !== id);
+            setName(removeName);
+        }
 
-    const namesList = name.map(name=> <li key={name.id}>{name.text}</li>)
+    const namesList = name.map(name=> <li key={name.id}>{name.text} <button onClick={()=>onRemove(name.id)}>삭제</button></li>);
+
+
+    //클릭 시 추가
     const onClick =()=>{
         const setNames = name.concat({
             id:nextId,
@@ -28,6 +37,7 @@ const IterationSample = () => {
 
 
     }
+
     return (
         <div>
             <ul>
