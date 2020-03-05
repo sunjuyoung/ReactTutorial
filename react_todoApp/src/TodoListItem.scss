@@ -1,0 +1,36 @@
+.TodoListItem{
+    padding :1rem;
+    display:flex;
+    align-items:center;
+    &:nth-child(even){
+        background: #f8f9fa;
+
+    }
+    .checkbox{
+        cursor: pointer;
+        flex:1;
+        display: flex;
+        align-items: center;
+        svg{
+            //아이콘
+            font-size: 2rem;
+        }
+
+        //체크되었을때 보여 줄 스타일
+        &.checked{
+            text-decoration: line-through;
+        }
+    }
+
+    .remove{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 1.5rem;
+
+        &:hover{
+            color: #ff8787;
+        }
+    }
+
+}
