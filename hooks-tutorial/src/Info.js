@@ -3,11 +3,12 @@ import React ,{useState,useEffect} from 'react';
 const Info = () => {
     const [name,setName] = useState('');
     const [nickName , setNickName] = useState('');
+    
 
     useEffect(()=>{
         console.log("렌더링이 완료");
         console.log({name,nickName});
-        return()=>{
+        return()=>{ //업데이트되기 직전
             console.log("cleanup");
             console.log(name);
         }
