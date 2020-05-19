@@ -1,31 +1,45 @@
-import React from 'react';
-import TodaysPlan from './03/TodaysPlan';
-import PropsComponent from './03/PropsComponent';
-import ChildComponent from './03/ChildComponent';
-import BooleanComponent from './03/BooleanComponent';
-import ChildComponent2 from './03/ChildComponent2';
+import React, { Component } from 'react';
+import Counter2 from './03/Counter2';
+import NewCounter from './03/NewCounter';
+import ListEx from './03/ListEx';
 
-function App() {
-  return (
-    <div className="body">
-      <TodaysPlan></TodaysPlan>
-      <PropsComponent name="하이"></PropsComponent>
-      <ChildComponent boolValue={true} 
-          numValue={1}
-          arrayValue={[1,2,3]}
-          objValue={{name:'제목',age:30}}
-          nodeValue={<h1>노드</h1>}
-          funcValue={()=>{return "hi"}}></ChildComponent>
-          <hr></hr>
-          <BooleanComponent bored/>
-          <BooleanComponent /> {/* undefined false는 조건문에서 동일하게 취급 */}
 
-          <div>
-            <ChildComponent2  objValue={{age:'20살'}}  requiredStringValue="문자"> 자식노드</ChildComponent2>
-          </div>
-          
-    </div>
-  );
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      count :1,
+    };
+
+    this.increaseCount = this.increaseCount.bind(this);
+    this.resetCount = this.resetCount.bind(this);
+  }
+
+  increaseCount(){
+    this.setState(({count})=>({count : count +1}));
+  }
+
+  resetCount(){
+    this.setState({count :0})
 }
+
+  /* resetCount(){
+    this.setState(({count})=>({
+      count:count + 10
+    }))
+  } */
+  render() {
+    return (
+      <div>
+         <Counter2 count={this.state.count} onAdd={this.increaseCount} onReset={this.resetCount}/>
+       
+      </div>
+
+
+
+    );
+  }
+}
+
 
 export default App;
