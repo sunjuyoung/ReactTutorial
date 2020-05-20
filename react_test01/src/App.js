@@ -3,6 +3,7 @@ import TodoTemplate from './TodoTemplate';
 import TodoInsert from './TodoInsert';
 import TodoList from './TodoList';
 
+//데이터 자동생성
 function createBulkList() {
   const array=[];
   for(var i=1; i<1000; i++){
@@ -18,42 +19,30 @@ function createBulkList() {
 
 
 function App() {
-  const [todos, setTodos] = useState([
-    {id:1,
-    text:'리액트',
-    checked:false
-  },
-  {id:2,
-    text:'스프링',
-    checked:false
-  },
-  {id:3,
-    text:'파이썬',
-    checked:true
-  }
-  ]);
+  //함수로 넣어주면 리렌더링 될때마다 함수 호출
+  //파라미터형태로 넣어주면 컴포넌트가 처음 렌더링 될때만 실행
+  const [todos, setTodos] = useState(createBulkList);
 
-  const nextId = useRef(4);
+  const nextId = useRef(1000);
+
   const onInsert = useCallback(text=>{
     const todo={
       id:nextId.current,
       text,
       checked:false
     };
-    setTodos(todos.concat(todo));
+    setTodos(todos=>todos.concat(todo));
     nextId.current +=1;
-  },[todos]);
+  },[]);
 
   const onRemove = useCallback(id=>{
-    const newTodos = todos.filter(todo=> todo.id !== id);
-    setTodos(newTodos);
-  },[todos]);
+    setTodos(todos=>todos.filter(todo=> todo.id !== id));
+  },[]);
 
   const onToggle = useCallback(id=>{
-      const newTodos = todos.map(todo=>todo.id === id? {...todo,checked:!todo.checked} : todo)
-      setTodos(newTodos);
+      setTodos(todos=>todos.map(todo=>todo.id === id? {...todo,checked:!todo.checked} : todo));
 
-  },[todos]);
+  },[]);
 
   return <TodoTemplate>
     <TodoInsert onInsert={onInsert}></TodoInsert>
