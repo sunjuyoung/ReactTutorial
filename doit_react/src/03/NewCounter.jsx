@@ -20,7 +20,7 @@ class NewCounter extends Component {
     }
 
     increaseCount(){
-        this.setState((newCount)=>({
+        this.setState(({newCount})=>({
             newCount : newCount+1
         }))
     }
