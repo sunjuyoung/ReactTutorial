@@ -7,7 +7,7 @@ class Counter extends Component {
         this.state = {
 
             //count 초깃값을 프로미터에서 전달된 값으로 한다
-            count : props.count,
+            count : 0
 
         };
         this.increaseCount = this.increaseCount.bind(this);
