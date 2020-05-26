@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import styled from 'styled-components';
 import Newsitem from './Newsitem';
 import Axios from 'axios';
+import usePromise from '../lib/usePromise';
 
 
 const NewsListBlock = styled.div`
@@ -16,15 +17,27 @@ const NewsListBlock = styled.div`
 } */
 
 const NewsList = ({category}) => {
-    const [articles,setArticles] = useState(null);
-    const [loading,setLoading] = useState(false);
+   
+    const [loading,response,error] = usePromise(()=>{
+        const query = category === 'all'? '':`&category=${category}`;
+        return Axios.get(`http://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=`, 
+        {crossDomain: true},
+        {
+           headers: { 'Access-Control-Allow-Origin': '*','Access-Control-Allow-Credentials':true,}
+         })  
+    },[category])
 
+
+
+
+    /* const [loading,setLoading] = useState(false);
+     const [articles,setArticles] = useState(null);
     useEffect(()=>{
         const fetchData = async()=>{
             setLoading(true);
             try{
                 const query = category === 'all'? '':`&category=${category}`;
-                const response  =  await Axios.get(`http://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=`, 
+                const response  =  await Axios.get(`http://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=6eed2a00335a4926a18d0f18829fb856`, 
                 {crossDomain: true},
                 {
                    headers: { 'Access-Control-Allow-Origin': '*','Access-Control-Allow-Credentials':true,}
@@ -38,15 +51,26 @@ const NewsList = ({category}) => {
         fetchData();
     },[category]);
 
+        if(!articles){
+        return null;
+    }
+ */
+
+
+
     if(loading){
         return <NewsListBlock>대기중</NewsListBlock>
     }
-    if(!articles){
+    if(!response){
         return null;
     }
+    if(error){
+        return <NewsListBlock>에러발생</NewsListBlock>
+
+    }
+    const {articles} = response.data;
+
     
-
-
     return (
         <NewsListBlock>
             {articles.map(article=>(
