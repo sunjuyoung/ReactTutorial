@@ -8,14 +8,14 @@ const NewsListBlock = styled.div`
     
 `
 
-const sampleArticle ={
+/* const sampleArticle ={
     title:'제목',
     description:'내용',
     url:'www.naver.com',
     urlToImage:'https://via.placeholder.com/160'
-}
+} */
 
-const NewsList = () => {
+const NewsList = ({category}) => {
     const [articles,setArticles] = useState(null);
     const [loading,setLoading] = useState(false);
 
@@ -23,7 +23,8 @@ const NewsList = () => {
         const fetchData = async()=>{
             setLoading(true);
             try{
-                const response  =  await Axios.get('http://newsapi.org/v2/top-headlines?country=kr&apiKey=', 
+                const query = category === 'all'? '':`&category=${category}`;
+                const response  =  await Axios.get(`http://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=`, 
                 {crossDomain: true},
                 {
                    headers: { 'Access-Control-Allow-Origin': '*','Access-Control-Allow-Credentials':true,}
@@ -35,7 +36,7 @@ const NewsList = () => {
             setLoading(false);
         };
         fetchData();
-    },[]);
+    },[category]);
 
     if(loading){
         return <NewsListBlock>대기중</NewsListBlock>
