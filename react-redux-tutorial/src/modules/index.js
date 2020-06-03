@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import counter from './counter';
-import todos from './todos';
+import counter1 from './Counter1';
+import todos1 from './todos1';
 
 
 //루트 리듀서
@@ -8,8 +8,8 @@ import todos from './todos';
 //때문에 하나로 합쳐준다
 //파일 이름을 index로 해주면 나중에 불러올때 디렉터리 이름까지만 입력하여 불러올수있다.
 const rootReducer = combineReducers({
-    counter,
-    todos
+    counter1,
+    todos1
 })
 
 export default rootReducer;
