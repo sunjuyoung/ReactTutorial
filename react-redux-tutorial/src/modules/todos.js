@@ -1,8 +1,25 @@
+import {createAction,handleActions} from 'redux-actions';
+
 const CHANGE_INPUT = 'todos/CHANGE_INPUT';
 const INSERT = 'todos/INSERT';
 const REMOVE = 'todos/REMOVE';
 const TOGGLE = 'todos/TOGGLE';
 
+export const changeInput = createAction(CHANGE_INPUT,input=>input);
+let id=1;
+export const insert = createAction(INSERT,text=>({id:id++,text,done:false}))
+export const remove = createAction(REMOVE,id=>id);
+export const toggle = createAction(TOGGLE,id=>id);
+
+const todos = handleActions(
+    {
+    [CHANGE_INPUT]:(state,{payload:input})=>({...state,input}),
+    [INSERT]:(state,{payload:})
+
+}
+);
+
+/* 
 export const changeInput = input=>({
     type:CHANGE_INPUT,
     input
@@ -42,7 +59,7 @@ const initialState = {
         }
     ]
 }
-
+ */
 function todos(state=initialState,action){
     switch(action.type){
         case CHANGE_INPUT:
