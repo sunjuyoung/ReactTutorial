@@ -5,11 +5,10 @@
 /.pnp
 .pnp.js
 
-# database
-/database.json
-
 # testing
 /coverage
+
+database.json
 
 # production
 /build
