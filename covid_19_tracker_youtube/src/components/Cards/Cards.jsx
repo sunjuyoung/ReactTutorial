@@ -9,7 +9,7 @@ const Cards = ({data}) => {
     if(!data.confirmed){
         return 'Loading...';
     }else{
-        console.log("Card:::",data.confirmed);
+       // console.log("Card:::",data.confirmed);
     }
     return (
         <div className={styles.container}>
@@ -25,7 +25,7 @@ const Cards = ({data}) => {
                             separator=","
                         />
                         <Typography color="textSecondary" >{new Date(data.lastUpdata).toDateString()}</Typography>
-                        <Typography variant="body2">Number</Typography>
+                        <Typography variant="body2">Number of active cases of COVID-19</Typography>
                     </CardContent>
                 </Grid>
                 <Grid item component={Card} xs={12} md={3} className={cx(styles.card,styles.recovered)}>
@@ -39,7 +39,7 @@ const Cards = ({data}) => {
                             separator=","
                         />
                          <Typography color="textSecondary" >{new Date(data.lastUpdata).toDateString()}</Typography>
-                        <Typography variant="body2">Number</Typography>
+                        <Typography variant="body2">Number of recoveries cases of COVID-19</Typography>
                     </CardContent>
                 </Grid>
                 <Grid item component={Card} xs={12} md={3} className={cx(styles.card,styles.deaths)}>
@@ -53,7 +53,7 @@ const Cards = ({data}) => {
                             separator=","
                         />
                          <Typography color="textSecondary" >{new Date(data.lastUpdata).toDateString()}</Typography>
-                        <Typography variant="body2">Number</Typography>
+                        <Typography variant="body2">Number of deaths cases of COVID-19</Typography>
                     </CardContent>
                 </Grid>
             </Grid>

@@ -12,7 +12,7 @@ function App() {
      const fetchDataCall = async()=>{
       const data =  await fetchData();
       setData(data);
-      console.log(data);
+      //console.log(data);
      }
      fetchDataCall();
    
@@ -21,8 +21,9 @@ function App() {
   return (
     <div className={styles.container}>
       <Cards data={data}/>
-      <Chart />
       <CountryPicker />
+      <Chart />
+      
     </div>
   );
 }

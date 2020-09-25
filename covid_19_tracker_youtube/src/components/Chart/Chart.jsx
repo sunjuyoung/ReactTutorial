@@ -11,9 +11,9 @@ const Chart = () => {
         const fetchAPI = async()=>{
             setDailyData(await fetchDailyData());
         } 
-        console.log("daily:",dailyData[0]);
+       // console.log("daily:",dailyData[0]);
         fetchAPI();
-    });
+    },[]);
 
    const lineChart = (
        dailyData.length
