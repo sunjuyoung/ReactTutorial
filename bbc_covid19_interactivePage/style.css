@@ -1,0 +1,74 @@
+html {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+body {
+	margin: 0;
+}
+div, section, header, footer, p, h1, h2 {
+	box-sizing: border-box;
+}
+a {
+	color: royalblue;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.global-width{
+	max-width: 620px;
+	margin:0 auto;
+	padding : 0 15px;
+}
+
+.scroll-graphic{
+	position: sticky;  /* 스크롤 내리면 위에 고정 */
+	top:0;	
+	height: 100vh;
+}
+
+.graphic-item{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute; /* 이미지 겹치기 */
+
+	left:0;
+	top:0;
+
+	width: 100%;
+	height: 100%;
+	opacity:0; /* 기본값은 모두 숨긴다 */
+}
+
+.visible{
+	opacity:1;
+}
+
+.screen-img{
+	max-height: 100vh;
+}
+
+
+.scroll-text{
+	position: relative; /* 텍스트 위로 */
+	padding-bottom: 1px;
+
+}
+
+.step{
+	margin-bottom: 60vh;
+	padding: 0.5rem 1rem;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 0 0 3px;
+}
+
+.bird{
+	position: absolute;
+	left: 0;
+	bottom: 70%;
+	width: 120px;
+	transform: translateX(-100%);
+	transition: 1.5s 0.2s linear;/* 재생시간, 딜레이시간,  */
+}
