@@ -1,0 +1,39 @@
+.user{
+}
+.user h1{
+    position: relative;
+    width: fit-content;
+    top: 40px;
+    background-color: white;
+    margin-left: 10px;
+    
+}
+.user_submit{
+    width: auto;
+    padding-top: 20px;
+    border: 1px solid black;
+}
+
+.user_input{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    width: 150px;
+}
+.user_checkbox{
+  
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.user_button{
+    margin-left: 10px; 
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+  } 
+
+  th,td {
+    border: 1px solid black;
+  }

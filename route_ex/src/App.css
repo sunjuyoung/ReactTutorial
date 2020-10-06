@@ -1,0 +1,16 @@
+.app{
+  margin : 10px;
+  padding-bottom: 2rem;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  
+}
+
+.login_box{
+  background-color: red;
+}
+
+input{
+  border-radius: 5px;
+}
