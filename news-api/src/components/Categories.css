@@ -1,0 +1,22 @@
+.categories{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.category{
+    font-size: 1.125rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding-bottom: 0.25rem;
+    margin-left: 2rem;
+    color: inherit;
+
+
+}
+
+.category:hover{
+    color:grey;
+}
+

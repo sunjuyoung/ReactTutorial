@@ -3,21 +3,17 @@ import './NewsList.css';
 import NewsItem from './NewsItem';
 import axios from 'axios';
 
-const sampleArticle={
-    title:'제목',
-    description:'내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용',
-    url:'https://google.com',
-    urlToImage:'https://via.placeholder.com/160'
-}
 
-const NewsList = () => {
+
+const NewsList = ({category}) => {
     const [article,setArticle] = useState(null);
     const [loading,setLoading] = useState(false);
 
     useEffect(()=>{
         const fetchData = async ()=>{
             try {
-                const response = await axios.get('http://newsapi.org/v2/top-headlines?country=kr&category=business&apiKey=');
+                const query = category=== 'all'? '' : `&category=${category}`;
+                const response = await axios.get(`http://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=b255408ea1914b14b3164fc60115ac82`);
                 setLoading(true);
                 setArticle(response.data.articles);
             } catch (error) {
@@ -27,7 +23,7 @@ const NewsList = () => {
         }
 
        fetchData();
-    },[]);
+    },[category]);
 
     if(loading){
         return <div>대기중...</div>
