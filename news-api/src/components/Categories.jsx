@@ -1,5 +1,6 @@
 import React,{useState,useCallback} from 'react';
 import './Categories.css';
+import {NavLink} from 'react-router-dom';
 
 
 const categories = [
@@ -30,17 +31,13 @@ const categories = [
 ]
 
 
-const Categories = ({onSelect}) => {
-    const [sCategory,setScategory] = useState('all');
-    
-    const test =useCallback((e)=>{
-        setScategory(e);
-    },[]);
-
+const Categories = () => {
     return (
         <div className="categories">
             {categories.map(c=>(
-                <div onClick={()=>onSelect(c.name)} className="category" key={c.name}>{c.text}</div>
+                <NavLink exact={c.name === 'all'}
+                     to={c.name ==='all'? '/': `/${c.name}`}
+                className="category" key={c.name}>{c.text}</NavLink>
             ))}
         </div>
     );
